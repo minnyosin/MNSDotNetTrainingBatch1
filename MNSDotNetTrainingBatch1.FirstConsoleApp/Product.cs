@@ -25,5 +25,9 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             Quantity = quantity;
             Category = category;
         }
+        public Product Clone()
+        {
+            return new Product(Id, Code, Name, Price, Quantity, Category);
+        }
     }
 }

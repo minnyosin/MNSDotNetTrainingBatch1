@@ -56,15 +56,17 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             Console.Write("Enter the Product code you want to update: ");
             string updateProduct = Console.ReadLine()!;
 
-            var product = Data.Products.FirstOrDefault(a => a.Code == updateProduct);
-            if (product == null)
+            var originalProduct = Data.Products.FirstOrDefault(a => a.Code == updateProduct);
+            if (originalProduct == null)
             {
                 Console.WriteLine("\nSorry...Product cannot be found.\n");
                 goto UpdatingProduct;
             }
             Console.WriteLine("\nThe Product found!\n");
-            Console.WriteLine($"Code: {product.Code}, Name: {product.Name}, Price: {product.Price}, Quantity: {product.Quantity}");
+            Console.WriteLine($"Code: {originalProduct.Code}, Name: {originalProduct.Name}, Price: {originalProduct.Price}, Quantity: {originalProduct.Quantity}");
             Console.WriteLine('\n');
+
+            var newProduct = originalProduct.Clone();
 
         RemovingQuantity:
             Console.Write("How much do you want to remove from the existing quantity?: ");
@@ -75,12 +77,12 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
                 Console.WriteLine("\nInvalid input\n");
                 goto RemovingQuantity;
             }
-            if (removeQuantity > product.Quantity)
+            if (removeQuantity > newProduct.Quantity)
             {
                 Console.WriteLine("\nNot enough quantity in the inventory!\n");
                 goto RemovingQuantity;
             }
-            product.Quantity -= removeQuantity;
+            newProduct.Quantity -= removeQuantity;
             Console.WriteLine("\nThe Quantity removed successfully!\n");
         }
 
