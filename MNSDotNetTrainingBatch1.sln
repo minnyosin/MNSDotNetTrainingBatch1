@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.FirstConsoleApp", "MNSDotNetTrainingBatch1.FirstConsoleApp\MNSDotNetTrainingBatch1.FirstConsoleApp.csproj", "{0C6AB73E-C8AF-4C61-96F8-5FF05E1231DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1MNSDotNetTrainingBatch1.ConsoleApp2", "ConsoleApp1MNSDotNetTrainingBatch1.ConsoleApp2\ConsoleApp1MNSDotNetTrainingBatch1.ConsoleApp2.csproj", "{49BBFA9F-88EF-4B13-8F95-C710EE4F2401}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0C6AB73E-C8AF-4C61-96F8-5FF05E1231DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C6AB73E-C8AF-4C61-96F8-5FF05E1231DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C6AB73E-C8AF-4C61-96F8-5FF05E1231DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49BBFA9F-88EF-4B13-8F95-C710EE4F2401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49BBFA9F-88EF-4B13-8F95-C710EE4F2401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49BBFA9F-88EF-4B13-8F95-C710EE4F2401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49BBFA9F-88EF-4B13-8F95-C710EE4F2401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
