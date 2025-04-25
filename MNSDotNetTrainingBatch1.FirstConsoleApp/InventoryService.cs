@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -297,6 +298,9 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
                         goto BeforeIncreaseOrLower;
                     }
                     break;
+                default:
+                    Console.WriteLine("Invalid Input!");
+                    goto ChooseTheAction;
             }
             connection.Close();
         }
