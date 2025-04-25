@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 
@@ -145,34 +146,158 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             Console.WriteLine('\n');
 
         //var newProduct = originalProduct.Clone();
-
-        RemovingQuantity:
-            Console.Write("How much do you want to remove from the existing quantity?: ");
-            string quantity = Console.ReadLine()!;
-            bool IsInt = int.TryParse(quantity, out int removeQuantity);
+        ChooseTheAction:
+            Console.WriteLine("1. Adjust the quantity.");
+            Console.WriteLine("2. Adjust the price");
+            Console.Write("What action do you want to do?: ");
+            string insertChoice = Console.ReadLine()!;
+            bool IsInt = int.TryParse(insertChoice, out int choice);
             if (!IsInt)
             {
-                Console.WriteLine("\nInvalid input\n");
-                goto RemovingQuantity;
+                Console.WriteLine("Invalid Input");
+                goto ChooseTheAction;
             }
-            if (removeQuantity > (int)dr["Quantity"])
-            {
-                Console.WriteLine("\nNot enough quantity in the inventory!\n");
-                goto RemovingQuantity;
-            }
-            int value = (int)dr["Quantity"];
-            value -= removeQuantity;
 
-            string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
+            switch (choice)
+            {
+                case 1:
+                BeforeAddOrSub:
+                    Console.Write("\nSubtract or add?(s for subtract, a for add): ");
+                    string quantitySubOrAdd = Console.ReadLine()!;
+                    if (quantitySubOrAdd.ToLower() == "s")
+                    {
+                    RemovingQuantity:
+                        Console.Write("\nHow much do you want to remove from the existing quantity?: ");
+                        string quantity = Console.ReadLine()!;
+                        bool IsInt1 = int.TryParse(quantity, out int removeQuantity);
+                        if (!IsInt1)
+                        {
+                            Console.WriteLine("\nInvalid input\n");
+                            goto RemovingQuantity;
+                        }
+                        if (removeQuantity > (int)dr["Quantity"])
+                        {
+                            Console.WriteLine("\nNot enough quantity in the inventory!\n");
+                            goto RemovingQuantity;
+                        }
+                        int removeValue = (int)dr["Quantity"];
+                        removeValue -= removeQuantity;
+
+                        string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
    SET [Quantity] = @Quantity
  WHERE [Code] = '{updateProduct}'";
 
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@Quantity", value);
-            cmd.ExecuteNonQuery();
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Quantity", removeValue);
+                        cmd.ExecuteNonQuery();
 
-            Console.WriteLine("\nThe Quantity removed successfully!\n");
+                        Console.WriteLine("\nThe Quantity removed successfully!\n");
+                    }
+                    else if (quantitySubOrAdd.ToLower() == "a")
+                    {
+                    AdddingQuantity:
+                        Console.Write("\nHow much do you want to add to the existing quantity?: ");
+                        string quantity = Console.ReadLine()!;
+                        bool IsInt2 = int.TryParse(quantity, out int addQuantity);
+                        if (!IsInt2)
+                        {
+                            Console.WriteLine("\nInvalid input\n");
+                            goto AdddingQuantity;
+                        }
+                        //if (removeQuantity > (int)dr["Quantity"])
+                        //{
+                        //    Console.WriteLine("\nNot enough quantity in the inventory!\n");
+                        //    goto AdddingQuantity;
+                        //}
+                        int addValue = (int)dr["Quantity"];
+                        addValue += addQuantity;
 
+                        string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
+   SET [Quantity] = @Quantity
+ WHERE [Code] = '{updateProduct}'";
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Quantity", addValue);
+                        cmd.ExecuteNonQuery();
+
+                        Console.WriteLine("\nThe Quantity added successfully!\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input!");
+                        goto BeforeAddOrSub;
+                    }
+                    break;
+
+                case 2:
+                BeforeIncreaseOrLower:
+                    Console.Write("\nIncrease or Lower?(i for increase, l for lower): ");
+                    string priceSubOrAdd = Console.ReadLine()!;
+                    if (priceSubOrAdd.ToLower() == "l")
+                    {
+                    LoweringPrice:
+                        Console.Write("\nHow much do you want to lower the price?: ");
+                        string price = Console.ReadLine()!;
+                        bool IsDecimal = decimal.TryParse(price, out decimal lowerPrice);
+                        if (!IsDecimal)
+                        {
+                            Console.WriteLine("\nInvalid input\n");
+                            goto LoweringPrice;
+                        }
+                        if (lowerPrice > (decimal)dr["Price"])
+                        {
+                            Console.WriteLine("\nPrice cannot be negative!\n");
+                            goto LoweringPrice;
+                        }
+                        decimal lowerValue = (decimal)dr["Price"];
+                        lowerValue -= lowerPrice;
+
+                        string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
+   SET [Price] = @Price
+ WHERE [Code] = '{updateProduct}'";
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Price", lowerValue);
+                        cmd.ExecuteNonQuery();
+
+                        Console.WriteLine("\nThe Price adjusted(lower) successfully!\n");
+                    }
+                    else if (priceSubOrAdd.ToLower() == "i")
+                    {
+                    IncreasingPrice:
+                        Console.Write("\nHow much do you want to increase the price?: ");
+                        string price = Console.ReadLine()!;
+                        bool IsDecimal = decimal.TryParse(price, out decimal increasePrice);
+                        if (!IsDecimal)
+                        {
+                            Console.WriteLine("\nInvalid input\n");
+                            goto IncreasingPrice;
+                        }
+                        //if (removeQuantity > (int)dr["Quantity"])
+                        //{
+                        //    Console.WriteLine("\nNot enough quantity in the inventory!\n");
+                        //    goto AdddingQuantity;
+                        //}
+                        decimal increaseValue = (decimal)dr["Price"];
+                        increaseValue += increasePrice;
+
+                        string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
+   SET [Price] = @Price
+ WHERE [Code] = '{updateProduct}'";
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Price", increaseValue);
+                        cmd.ExecuteNonQuery();
+
+                        Console.WriteLine("\nThe Price adjusted(increase) successfully!\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input!");
+                        goto BeforeIncreaseOrLower;
+                    }
+                    break;
+            }
             connection.Close();
         }
 

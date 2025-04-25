@@ -11,6 +11,5 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
         public static int ProductId { get; set; }
 
         public static List<Product> Products = new List<Product>();
-
     }
 }
