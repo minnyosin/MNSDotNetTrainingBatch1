@@ -218,7 +218,7 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             if (IsSure.ToLower() == "y")
             {
                 string query = $"delete from Tbl_InventoryServices where Code = '{deleteProduct}'";
-                SqlCommand cmd = new SqlCommand (query, connection);
+                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Id", dr["Id"]);
                 cmd.Parameters.AddWithValue("@Code", dr["Code"]);
                 cmd.Parameters.AddWithValue("@Name", dr["Name"]);
