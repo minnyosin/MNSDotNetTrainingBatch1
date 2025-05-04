@@ -5,9 +5,9 @@ using Microsoft.Data.SqlClient;
 
 HomeworkService homeworkService = new HomeworkService();
 //homeworkService.Read();
-//homeworkService.Detail(1);
-//homeworkService.Create("Soe Htet Lin", "soehtetlin");
-//homeworkService.Update(4, "Aung Thu Lin", "aungthulin21");
-homeworkService.Delete(4);
+homeworkService.Detail();
+//homeworkService.Create();
+//homeworkService.Update();
+//homeworkService.Delete();
 
 

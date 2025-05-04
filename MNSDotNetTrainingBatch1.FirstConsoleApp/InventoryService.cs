@@ -92,6 +92,7 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);
+            connection.Close();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -105,7 +106,6 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
                 Console.WriteLine('\n');
 
             }
-            connection.Close();
         }
 
         public void UpdateProduct()
@@ -120,8 +120,9 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
 
             //var originalProduct = Data.Products.FirstOrDefault(a => a.Code == updateProduct);
 
-            string query1 = $"select * from Tbl_InventoryServices where Code = '{updateProduct}'";
+            string query1 = $"select * from Tbl_InventoryServices where Code = @Code";
             SqlCommand cmd1 = new SqlCommand(query1, connection);
+            cmd1.Parameters.AddWithValue("@Code", updateProduct);
             SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter(cmd1);
             DataTable dt = new DataTable();
             sqlDataAdapter1.Fill(dt);
@@ -186,9 +187,10 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
 
                         string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
    SET [Quantity] = @Quantity
- WHERE [Code] = '{updateProduct}'";
+ WHERE [Code] = @Code";
 
                         SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Code", updateProduct);
                         cmd.Parameters.AddWithValue("@Quantity", removeValue);
                         cmd.ExecuteNonQuery();
 
@@ -215,9 +217,10 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
 
                         string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
    SET [Quantity] = @Quantity
- WHERE [Code] = '{updateProduct}'";
+ WHERE [Code] = @Code";
 
                         SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Code", updateProduct);
                         cmd.Parameters.AddWithValue("@Quantity", addValue);
                         cmd.ExecuteNonQuery();
 
@@ -255,9 +258,10 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
 
                         string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
    SET [Price] = @Price
- WHERE [Code] = '{updateProduct}'";
+ WHERE [Code] = @Code";
 
                         SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Code", updateProduct);
                         cmd.Parameters.AddWithValue("@Price", lowerValue);
                         cmd.ExecuteNonQuery();
 
@@ -284,9 +288,10 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
 
                         string query = $@"UPDATE [dbo].[Tbl_InventoryServices]
    SET [Price] = @Price
- WHERE [Code] = '{updateProduct}'";
+ WHERE [Code] = @Code";
 
                         SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Code", updateProduct);
                         cmd.Parameters.AddWithValue("@Price", increaseValue);
                         cmd.ExecuteNonQuery();
 
@@ -314,8 +319,9 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             Console.Write("Enter the product code you want to delete: ");
             string deleteProduct = Console.ReadLine()!;
 
-            string query1 = $"select * from Tbl_InventoryServices where Code = '{deleteProduct}'";
+            string query1 = $"select * from Tbl_InventoryServices where Code = @Code";
             SqlCommand cmd1 = new SqlCommand(query1, connection);
+            cmd1.Parameters.AddWithValue("@Code", deleteProduct);
             SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter(cmd1);
             DataTable dt = new DataTable();
             sqlDataAdapter1.Fill(dt);
@@ -346,7 +352,7 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
             string IsSure = Console.ReadLine()!;
             if (IsSure.ToLower() == "y")
             {
-                string query = $"delete from Tbl_InventoryServices where Code = '{deleteProduct}'";
+                string query = $"delete from Tbl_InventoryServices where Code = @Code";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Id", dr["Id"]);
                 cmd.Parameters.AddWithValue("@Code", dr["Code"]);
