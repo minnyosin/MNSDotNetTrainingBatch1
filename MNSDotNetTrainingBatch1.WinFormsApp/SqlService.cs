@@ -50,7 +50,7 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
             connection.Close();
 
             return result;
-        }
+        } 
         
     }
 }
