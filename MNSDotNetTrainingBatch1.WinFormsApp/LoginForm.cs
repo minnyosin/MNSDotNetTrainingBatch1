@@ -14,8 +14,8 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
             string query = "select * from Tbl_User where @Username = Username and @Password = Password";
 
