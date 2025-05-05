@@ -15,7 +15,7 @@ namespace MNSDotNetTrainingBatch1.FirstConsoleApp
     internal class InventoryService
     {
 
-        SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
             DataSource = ".",
             InitialCatalog = "DotNetTrainingBatch1",
