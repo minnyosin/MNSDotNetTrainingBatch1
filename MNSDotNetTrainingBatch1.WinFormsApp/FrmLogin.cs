@@ -3,10 +3,10 @@ using System.Data;
 
 namespace MNSDotNetTrainingBatch1.WinFormsApp
 {
-    public partial class LoginForm : Form
+    public partial class FrmLogin : Form
     {
         SqlService _sqlServices;
-        public LoginForm()
+        public FrmLogin()
         {
             InitializeComponent();
             _sqlServices = new SqlService();

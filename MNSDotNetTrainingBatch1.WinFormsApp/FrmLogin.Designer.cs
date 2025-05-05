@@ -1,6 +1,6 @@
 ﻿namespace MNSDotNetTrainingBatch1.WinFormsApp
 {
-    partial class LoginForm
+    partial class FrmLogin
     {
         /// <summary>
         ///  Required designer variable.
