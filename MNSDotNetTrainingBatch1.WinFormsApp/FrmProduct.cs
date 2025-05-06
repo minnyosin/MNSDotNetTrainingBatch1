@@ -19,6 +19,7 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
         public FrmProduct()
         {
             InitializeComponent();
+            //dgvData.AutoGenerateColumns = false;
             _sqlService = new SqlService();
         }
 
@@ -30,6 +31,10 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
         private void ClearControls()
         {
             this.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.Clear()); // GPT Code
+            //textBox2.Clear();
+            //textBox3.Clear();
+            //textBox4.Clear();
+            textBox2.Focus();
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)

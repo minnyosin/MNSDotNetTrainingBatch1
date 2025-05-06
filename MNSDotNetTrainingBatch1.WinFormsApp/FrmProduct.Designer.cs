@@ -40,6 +40,8 @@
             button1 = new Button();
             button2 = new Button();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            colProductCode = new DataGridViewTextBoxColumn();
+            colProductName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             SuspendLayout();
             // 
@@ -50,11 +52,15 @@
             // 
             // dgvData
             // 
+            dgvData.AllowUserToAddRows = false;
+            dgvData.AllowUserToDeleteRows = false;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvData.Columns.AddRange(new DataGridViewColumn[] { colProductCode, colProductName });
             dgvData.Dock = DockStyle.Bottom;
             dgvData.Location = new Point(0, 211);
             dgvData.Margin = new Padding(4);
             dgvData.Name = "dgvData";
+            dgvData.ReadOnly = true;
             dgvData.Size = new Size(1400, 594);
             dgvData.TabIndex = 1;
             // 
@@ -139,6 +145,20 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
+            // colProductCode
+            // 
+            colProductCode.DataPropertyName = "ProductCode";
+            colProductCode.HeaderText = "Product Code";
+            colProductCode.Name = "colProductCode";
+            colProductCode.ReadOnly = true;
+            // 
+            // colProductName
+            // 
+            colProductName.DataPropertyName = "ProductName";
+            colProductName.HeaderText = "Product Name";
+            colProductName.Name = "colProductName";
+            colProductName.ReadOnly = true;
+            // 
             // FrmProduct
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -178,5 +198,7 @@
         private Button button1;
         private Button button2;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private DataGridViewTextBoxColumn colProductCode;
+        private DataGridViewTextBoxColumn colProductName;
     }
 }

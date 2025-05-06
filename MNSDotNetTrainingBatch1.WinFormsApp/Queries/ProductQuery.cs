@@ -8,7 +8,14 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp.Quaries
 {
     internal class ProductQuery
     {
-        public static string GetAllProduct { get; } = "select * from Tbl_Product";
+        public static string GetAllProduct { get; } = @"select ProductCode,
+ProductName,
+Price, 
+Quantity, 
+CreatedDateTime,
+U.Username as CreatedBy from Tbl_Product P
+inner join Tbl_User U on P.CreatedBy = U.Id
+inner join Tbl_ProductCategory PC on P.ProductCategoryId = PC.Id";
 
         public static string CreateProduct { get; } = @"INSERT INTO [dbo].[Tbl_Product]
            ([ProductName]
