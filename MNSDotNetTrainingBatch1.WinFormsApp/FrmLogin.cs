@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using MNSDotNetTrainingBatch1.WinFormsApp.Quaries;
 using System.Data;
 
 namespace MNSDotNetTrainingBatch1.WinFormsApp
@@ -19,9 +20,9 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            string query = "select * from Tbl_User where @Username = Username and @Password = Password";
+            //string query = "select * from Tbl_User where @Username = Username and @Password = Password";
 
-            DataTable dt = _sqlServices.Query(query,
+            DataTable dt = _sqlServices.Query(ProductQuery.Login,
                                               new SqlParameter("@Username", username),
                                               new SqlParameter("@Password", password));
 
@@ -33,7 +34,7 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
 
             MessageBox.Show("Login Successful!");
 
-            AppSetting.CurrentUser = Convert.ToInt32(dt.Rows[0]["Id"]);
+            AppSetting.CurrentUser = Convert.ToInt32(dt.Rows[0]["Id"]); // this take the login information
 
             txtUsername.Clear();
             txtPassword.Clear();
@@ -46,8 +47,6 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
             this.Show();
 
             txtUsername.Focus();
-
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -31,6 +31,11 @@
             components = new System.ComponentModel.Container();
             contextMenuStrip1 = new ContextMenuStrip(components);
             dgvData = new DataGridView();
+            colEdit = new DataGridViewButtonColumn();
+            colDelete = new DataGridViewButtonColumn();
+            colProductId = new DataGridViewTextBoxColumn();
+            colProductCode = new DataGridViewTextBoxColumn();
+            colProductName = new DataGridViewTextBoxColumn();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             textBox4 = new TextBox();
@@ -38,10 +43,9 @@
             label3 = new Label();
             label4 = new Label();
             button1 = new Button();
-            button2 = new Button();
+            btnSave = new Button();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            colProductCode = new DataGridViewTextBoxColumn();
-            colProductName = new DataGridViewTextBoxColumn();
+            btnUpdate = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             SuspendLayout();
             // 
@@ -55,7 +59,7 @@
             dgvData.AllowUserToAddRows = false;
             dgvData.AllowUserToDeleteRows = false;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Columns.AddRange(new DataGridViewColumn[] { colProductCode, colProductName });
+            dgvData.Columns.AddRange(new DataGridViewColumn[] { colEdit, colDelete, colProductId, colProductCode, colProductName });
             dgvData.Dock = DockStyle.Bottom;
             dgvData.Location = new Point(0, 211);
             dgvData.Margin = new Padding(4);
@@ -63,6 +67,44 @@
             dgvData.ReadOnly = true;
             dgvData.Size = new Size(1400, 594);
             dgvData.TabIndex = 1;
+            dgvData.CellContentClick += dgvData_CellContentClick;
+            // 
+            // colEdit
+            // 
+            colEdit.HeaderText = "Edit";
+            colEdit.Name = "colEdit";
+            colEdit.ReadOnly = true;
+            colEdit.Text = "Edit";
+            colEdit.UseColumnTextForButtonValue = true;
+            // 
+            // colDelete
+            // 
+            colDelete.HeaderText = "Delete";
+            colDelete.Name = "colDelete";
+            colDelete.ReadOnly = true;
+            colDelete.Text = "Delete";
+            colDelete.UseColumnTextForButtonValue = true;
+            // 
+            // colProductId
+            // 
+            colProductId.DataPropertyName = "ProductId";
+            colProductId.HeaderText = "Product Id";
+            colProductId.Name = "colProductId";
+            colProductId.ReadOnly = true;
+            // 
+            // colProductCode
+            // 
+            colProductCode.DataPropertyName = "ProductCode";
+            colProductCode.HeaderText = "ProductCode";
+            colProductCode.Name = "colProductCode";
+            colProductCode.ReadOnly = true;
+            // 
+            // colProductName
+            // 
+            colProductName.DataPropertyName = "ProductName";
+            colProductName.HeaderText = "Product Name";
+            colProductName.Name = "colProductName";
+            colProductName.ReadOnly = true;
             // 
             // textBox2
             // 
@@ -130,41 +172,39 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += btnCancel_Click;
             // 
-            // button2
+            // btnSave
             // 
-            button2.Location = new Point(384, 156);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 29);
-            button2.TabIndex = 11;
-            button2.Text = "&Save";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += btnSave_Click;
+            btnSave.Location = new Point(384, 156);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(82, 29);
+            btnSave.TabIndex = 11;
+            btnSave.Text = "&Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // sqlCommand1
             // 
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
-            // colProductCode
+            // btnUpdate
             // 
-            colProductCode.DataPropertyName = "ProductCode";
-            colProductCode.HeaderText = "Product Code";
-            colProductCode.Name = "colProductCode";
-            colProductCode.ReadOnly = true;
-            // 
-            // colProductName
-            // 
-            colProductName.DataPropertyName = "ProductName";
-            colProductName.HeaderText = "Product Name";
-            colProductName.Name = "colProductName";
-            colProductName.ReadOnly = true;
+            btnUpdate.Location = new Point(384, 156);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(82, 29);
+            btnUpdate.TabIndex = 12;
+            btnUpdate.Text = "&Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Visible = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // FrmProduct
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1400, 805);
-            Controls.Add(button2);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnSave);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -196,8 +236,12 @@
         private Label label3;
         private Label label4;
         private Button button1;
-        private Button button2;
+        private Button btnSave;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Button btnUpdate;
+        private DataGridViewButtonColumn colEdit;
+        private DataGridViewButtonColumn colDelete;
+        private DataGridViewTextBoxColumn colProductId;
         private DataGridViewTextBoxColumn colProductCode;
         private DataGridViewTextBoxColumn colProductName;
     }

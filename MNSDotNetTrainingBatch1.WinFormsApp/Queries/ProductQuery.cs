@@ -8,14 +8,18 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp.Quaries
 {
     internal class ProductQuery
     {
-        public static string GetAllProduct { get; } = @"select ProductCode,
+        public static string GetAllProduct { get; } = @"select ProductId, ProductCode,
 ProductName,
 Price, 
 Quantity, 
 CreatedDateTime,
-U.Username as CreatedBy from Tbl_Product P
-inner join Tbl_User U on P.CreatedBy = U.Id
-inner join Tbl_ProductCategory PC on P.ProductCategoryId = PC.Id";
+U.Username as CreatedBy,
+ModifiedDateTime,
+ModifiedBy from Tbl_Product P
+left join Tbl_User U on P.CreatedBy = U.Id
+left join Tbl_ProductCategory PC on P.ProductCategoryId = PC.Id";
+
+        public static string Detail { get; } = "select * from Tbl_Product where ProductId = @ProductId";
 
         public static string CreateProduct { get; } = @"INSERT INTO [dbo].[Tbl_Product]
            ([ProductName]
@@ -29,5 +33,19 @@ inner join Tbl_ProductCategory PC on P.ProductCategoryId = PC.Id";
            ,@Quantity
            ,@CreatedDate
            ,@CreatedBy)";
+
+        public static string Login { get; } = "select * from Tbl_User where @Username = Username and @Password = Password";
+
+        public static string UpdateProduct { get; } = @"UPDATE [dbo].[Tbl_Product]
+   SET [ProductName] = @ProductName
+      ,[Price] = @Price
+      ,[Quantity] = @Quantity
+      ,[ModifiedDateTime] = @ModifiedDate
+      ,[ModifiedBy] = @ModifiedBy
+ WHERE ProductId = @ProductId";
+
+        public static string DeleteProduct { get; } = "delete from Tbl_product where ProductId = @ProductId";
     }
+
+
 }
