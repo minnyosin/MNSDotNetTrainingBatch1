@@ -129,8 +129,8 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
                 _productId = id;
 
                 var result = MessageBox.Show("Are you sure you want to delete?",
-                    "Inventory Management System", 
-                    MessageBoxButtons.YesNo, 
+                    "Inventory Management System",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (result == DialogResult.No)
@@ -148,9 +148,7 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
 
                 BindData();
             }
-
         }
-        
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -171,9 +169,9 @@ namespace MNSDotNetTrainingBatch1.WinFormsApp
             ClearControls();
 
             string message = result > 0 ? "Update Successful!" : "Update Failed!";
-            MessageBox.Show(message, 
-                "Inventory Management System", 
-                MessageBoxButtons.OK, 
+            MessageBox.Show(message,
+                "Inventory Management System",
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
     }
