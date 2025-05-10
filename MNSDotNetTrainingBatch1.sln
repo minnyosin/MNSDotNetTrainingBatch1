@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.WinFormsApp", "MNSDotNetTrainingBatch1.WinFormsApp\MNSDotNetTrainingBatch1.WinFormsApp.csproj", "{3F211942-E63A-473F-B585-F3CD4F044C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.ConsoleApp3", "MNSDotNetTrainingBatch1.ConsoleApp3\MNSDotNetTrainingBatch1.ConsoleApp3.csproj", "{C8E2DB23-2E1C-4EB0-8C11-A4380A7DA518}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3F211942-E63A-473F-B585-F3CD4F044C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F211942-E63A-473F-B585-F3CD4F044C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F211942-E63A-473F-B585-F3CD4F044C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8E2DB23-2E1C-4EB0-8C11-A4380A7DA518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8E2DB23-2E1C-4EB0-8C11-A4380A7DA518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8E2DB23-2E1C-4EB0-8C11-A4380A7DA518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8E2DB23-2E1C-4EB0-8C11-A4380A7DA518}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
