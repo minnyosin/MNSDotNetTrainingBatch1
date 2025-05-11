@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.ConsoleApp4", "MNSDotNetTrainingBatch1.ConsoleApp4\MNSDotNetTrainingBatch1.ConsoleApp4.csproj", "{18D143E5-6843-4DAE-81F2-6556FD9FD9FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.ConsoleApp5", "MNSDotNetTrainingBatch1.ConsoleApp5\MNSDotNetTrainingBatch1.ConsoleApp5.csproj", "{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Database", "ClassLibrary1MNSDotNetTrainingBatch1.Database\MNSDotNetTrainingBatch1.Database.csproj", "{59AFA499-D728-4430-8D38-390C8F0E4E61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{18D143E5-6843-4DAE-81F2-6556FD9FD9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D143E5-6843-4DAE-81F2-6556FD9FD9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D143E5-6843-4DAE-81F2-6556FD9FD9FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
