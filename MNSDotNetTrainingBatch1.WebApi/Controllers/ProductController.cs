@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 using MNSDotNetTrainingBatch1.Shared;
 using MNSDotNetTrainingBatch1.WebApi.Models;
+using MNSDotNetTrainingBatch1.WebApi.Services;
 
 namespace MNSDotNetTrainingBatch1.WebApi.Controllers
 {
@@ -11,138 +13,67 @@ namespace MNSDotNetTrainingBatch1.WebApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly DapperService _dapperService;
+        private readonly ProductService _productService;
+        ProductModel productModel = new ProductModel();
 
         public ProductController()
         {
-            SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder
-            {
-                DataSource = ".",
-                InitialCatalog = "DotNetTrainingBatch1",
-                UserID = "sa",
-                Password = "sa@123",
-                TrustServerCertificate = true
-            };
-
-            _dapperService = new DapperService(_sqlConnectionStringBuilder);
+            _productService = new ProductService();
         }
         [HttpGet]
         public IActionResult GetProduct()
         {
-            string query = "select * from Tbl_Product";
-            var lst = _dapperService.Query<ProductModel>(query);
-            var data = new
-            {
-                IsSuccess = true,
-                Message = "Success!",
-                Data = lst
-            };
-            return Ok(data);
+            var model = _productService.GetProduct();
+            return Ok(model);
         }
 
         [HttpGet("Edit/{Id}")]
         [HttpGet("{Id}")]
         public IActionResult GetProductV2(int Id)
         {
-            string query = "select * from Tbl_Product where @ProductId = ProductId";
-            var lst = _dapperService.Query<ProductModel>(query, new
+            var model = _productService.GetProductById(Id);
+            if (!model.IsSuccess)
             {
-                ProductId = Id
-            });
-
-            if (lst.Count == 0)
-            {
-                return NotFound(new
-                {
-                    IsSuccess = false,
-                    Message = "Product Not Found!"
-                });
+                return BadRequest(model);
             }
-            var data = new
-            {
-                IsSuccess = true,
-                Message = "Success!",
-                Data = lst[0]
-            };
-            return Ok(data);
+            return Ok(model);
         }
 
         [HttpPost]
         public IActionResult CreateProduct([FromBody] ProductModel product)
         {
-            product.CreatedDateTime = DateTime.Now;
-            product.CreatedBy = 1;
-
-            string query = @"INSERT INTO [dbo].[Tbl_Product]
-            ([ProductName]
-            ,[Price]
-            ,[Quantity]
-            ,[CreatedDateTime]
-            ,[CreatedBy])
-       VALUES
-            (@ProductName
-            ,@Price
-            ,@Quantity
-            ,@CreatedDateTime
-            ,@CreatedBy)";
-
-            int result = _dapperService.Execute(query, product);
-            var data = new
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Update Successful" : "Update Failed!"
-            };
-            return Ok(data);
+            string message = product.ToJson();
+            Console.WriteLine("Create Product => " + message);
+            var model = _productService.CreateProduct(product);
+            return Ok(model);
         }
 
-        [HttpPut]
-        public IActionResult CreateOrUpdateProduct()
+        
+        [HttpPut("{Id}")]
+        public IActionResult CreateOrUpdateProduct(int Id, [FromBody] ProductModel product)
         {
-            return Ok("CreateOrUpdateProduct");
+            var model = _productService.GetProductById(Id);
+            if (model.IsSuccess == false)
+            {
+                var model1 = _productService.CreateProduct(product);
+                return Ok(model1);
+            }
+            var model2 = _productService.UpdateProduct(Id, product);
+            return Ok(model2);
         }
 
-        [HttpPatch]
-        public IActionResult UpdateProduct([FromBody] ProductModel product)
+        [HttpPatch("{Id}")]
+        public IActionResult UpdateProduct(int Id, [FromBody] ProductModel product)
         {
-            product.ModifiedDateTime = DateTime.Now;
-            product.ModifiedBy = 1;
-
-            string query = @"UPDATE [dbo].[Tbl_Product]
-   SET [ProductName] = @ProductName
-      ,[Price] = @Price
-      ,[Quantity] = @Quantity
-      ,[ModifiedDateTime] = @ModifiedDateTime
-      ,[ModifiedBy] = @ModifiedBy
- WHERE [ProductId] = @ProductId";
-
-            int result = _dapperService.Execute(query, product);
-
-            var data = new
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Update Success!" : "Update Failed!"
-            };
-
-            return Ok(data);
+            var model = _productService.UpdateProduct(Id, product);
+            return Ok(model);
         }
 
         [HttpDelete("{Id}")]
         public IActionResult DeleteProduct(int Id)
         {
-            string query = "delete from Tbl_Product where ProductId = @ProductId";
-
-            int result = _dapperService.Execute(query, new
-            {
-                ProductId = Id
-            });
-
-            var data = new
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Delete Successful!" : "Delete Failed!"
-            };
-            
-            return Ok(data);
+            var model = _productService.DeleteProduct(Id);
+            return Ok(model);
         }
     }
 
