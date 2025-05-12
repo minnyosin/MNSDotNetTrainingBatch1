@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Database", "ClassLibrary1MNSDotNetTrainingBatch1.Database\MNSDotNetTrainingBatch1.Database.csproj", "{59AFA499-D728-4430-8D38-390C8F0E4E61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.WebApi", "MNSDotNetTrainingBatch1.WebApi\MNSDotNetTrainingBatch1.WebApi.csproj", "{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
