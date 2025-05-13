@@ -14,7 +14,6 @@ namespace MNSDotNetTrainingBatch1.WebApi.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
-        ProductModel productModel = new ProductModel();
 
         public ProductController()
         {

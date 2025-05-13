@@ -59,8 +59,6 @@ namespace MNSDotNetTrainingBatch1.WebApi.Services
         }
         public ResponseModel CreateProduct(ProductModel requestModel)
         {
-            
-
             if (!requestModel.ProductName.IsNullOrEmptyV2())
             {
                 return new ResponseModel
@@ -130,8 +128,6 @@ namespace MNSDotNetTrainingBatch1.WebApi.Services
                 fields += "[Quantity] = @Quantity,";
             }
 
-
-
             if (fields.Length == 0)
             {
                 var response = new ResponseModel
@@ -156,7 +152,6 @@ namespace MNSDotNetTrainingBatch1.WebApi.Services
             return model;
 
         }
-
         private ResponseModel UpdateProduct(ProductModel requestModel, string fields)
         {
             requestModel.ModifiedDateTime = DateTime.Now;
