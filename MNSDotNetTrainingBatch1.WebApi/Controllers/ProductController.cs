@@ -13,16 +13,24 @@ namespace MNSDotNetTrainingBatch1.WebApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController()
+        public ProductController(IProductService productService)
         {
-            _productService = new ProductService();
+            _productService = productService;
         }
+
         [HttpGet]
-        public IActionResult GetProduct()
+        public IActionResult GetProducts()
         {
-            var model = _productService.GetProduct();
+            var model = _productService.GetProducts();
+            return Ok(model);
+        }
+
+        [HttpGet("{pageNo}/{pageSize}")]
+        public IActionResult GetProduct(int pageNo = 1, int pageSize = 10)
+        {
+            var model = _productService.GetProduct(pageNo, pageSize);
             return Ok(model);
         }
 
@@ -52,7 +60,7 @@ namespace MNSDotNetTrainingBatch1.WebApi.Controllers
         public IActionResult CreateOrUpdateProduct(int Id, [FromBody] ProductModel product)
         {
             var model = _productService.GetProductById(Id);
-            if (model.IsSuccess == false)
+            if (!model.IsSuccess)
             {
                 var model1 = _productService.CreateProduct(product);
                 return Ok(model1);

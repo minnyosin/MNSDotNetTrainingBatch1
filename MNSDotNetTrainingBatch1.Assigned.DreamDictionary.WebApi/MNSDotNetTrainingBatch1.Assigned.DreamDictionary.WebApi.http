@@ -1,0 +1,6 @@
+@MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi_HostAddress = http://localhost:5276
+
+GET {{MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

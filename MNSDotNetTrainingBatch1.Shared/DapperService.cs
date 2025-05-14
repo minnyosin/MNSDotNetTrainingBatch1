@@ -1,16 +1,18 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
 using System.Data;
 
 namespace MNSDotNetTrainingBatch1.Shared
 {
-    public class DapperService
+    public class DapperService : IDbV2Service
     {
         private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
 
-        public DapperService(SqlConnectionStringBuilder sqlconnectionStringBuilder)
+        public DapperService(IConfiguration configuration)
         {
-            _sqlConnectionStringBuilder = sqlconnectionStringBuilder;
+            _sqlConnectionStringBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("Dbconnection"));
         }
 
         public List<T> Query<T>(string query, object? parameters = null!)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using MNSDotNetTrainingBatch1.Shared;
@@ -6,25 +7,30 @@ using MNSDotNetTrainingBatch1.WebApi.Models;
 
 namespace MNSDotNetTrainingBatch1.WebApi.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly DapperService _dapperService;
-        public ProductService()
+        private readonly IDbV2Service _dapperService;
+
+        public ProductService(IDbV2Service dapperService)
         {
-            SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder
-            {
-                DataSource = ".",
-                InitialCatalog = "DotNetTrainingBatch1",
-                UserID = "sa",
-                Password = "sa@123",
-                TrustServerCertificate = true
-            };
-            _dapperService = new DapperService(_sqlConnectionStringBuilder);
+            _dapperService = dapperService;
         }
-        public ResponseModel GetProduct()
+        public ResponseModel GetProducts()
         {
             string query = "select * from Tbl_Product";
             var lst = _dapperService.Query<ProductModel>(query);
+            var model = new ResponseModel
+            {
+                IsSuccess = true,
+                Message = "Success!",
+                Data = lst
+            };
+            return model;
+        }
+        public ResponseModel GetProduct(int pageNo, int pageSize)
+        {
+            string query = "select * from Tbl_Product";
+            var lst = _dapperService.Query<ProductModel>(query).Skip((pageNo - 1) * pageSize).Take(pageSize);
             var model = new ResponseModel
             {
                 IsSuccess = true,
