@@ -1,71 +1,63 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Data;
+using System.Diagnostics.Contracts;
+using System.Text.Json.Serialization;
+using Microsoft.Data.SqlClient;
+using MNSDotNetTrainingBatch1.Shared;
 using Newtonsoft.Json;
 
-string result = File.ReadAllText("DreamDictionary.json");
-var lst = JsonConvert.SerializeObject(result, Formatting.Indented);
+using MNSDotNetTrainingBatch1.FirstConsoleApp;
 
-//foreach(var item in lst)
-
-
-
-Console.WriteLine(lst);
+StartofSystem:
+Console.WriteLine("Inventory Management System");
+Console.WriteLine("-----------------------------");
+InventoryService inventoryService = new InventoryService();
 
 
+Console.WriteLine("1. Create a new Product");
+Console.WriteLine("2. View Product");
+Console.WriteLine("3. Update the product");
+Console.WriteLine("4. Delete the product");
+Console.WriteLine("5. Exit");
+Console.Write("Choose any options: ");
 
 
-//using MNSDotNetTrainingBatch1.FirstConsoleApp;
+string chooseOptions = Console.ReadLine()!;
+bool IsInt = int.TryParse(chooseOptions, out int options);
+if (!IsInt)
+{
+    Console.WriteLine("Invalid Input!!\n");
+    goto StartofSystem;
+}
+switch (options)
+{
+    case 1:
+        Console.WriteLine("\nCreating a product...\n");
+        inventoryService.CreateProduct();
+        goto StartofSystem;
 
-//StartofSystem:
-//Console.WriteLine("Inventory Management System");
-//Console.WriteLine("-----------------------------");
-//InventoryService inventoryService = new InventoryService();
+    case 2:
+        Console.WriteLine("\nHere is the product list of your inventory: \n");
+        inventoryService.ViewProduct();
+        goto StartofSystem;
 
+    case 3:
+        Console.WriteLine("\nUpdating the product... \n");
+        inventoryService.UpdateProduct();
+        goto StartofSystem;
 
-//Console.WriteLine("1. Create a new Product");
-//Console.WriteLine("2. View Product");
-//Console.WriteLine("3. Update the product");
-//Console.WriteLine("4. Delete the product");
-//Console.WriteLine("5. Exit");
-//Console.Write("Choose any options: ");
+    case 4:
+        Console.WriteLine("\nDeleting the product... \n");
+        inventoryService.DeleteProduct();
+        goto StartofSystem;
 
+    case 5:
+        Console.WriteLine("\nExisting the Program...");
+        goto EndOfSystem;
 
-//string chooseOptions = Console.ReadLine()!;
-//bool IsInt = int.TryParse(chooseOptions, out int options);
-//if (!IsInt)
-//{
-//    Console.WriteLine("Invalid Input!!\n");
-//    goto StartofSystem;
-//}
-//switch (options)
-//{
-//    case 1:
-//        Console.WriteLine("\nCreating a product...\n");
-//        inventoryService.CreateProduct();
-//        goto StartofSystem;
+    default:
+        Console.WriteLine("\nInvalid option entered!! Please choose again.\n");
+        goto StartofSystem;
+}
 
-//    case 2:
-//        Console.WriteLine("\nHere is the product list of your inventory: \n");
-//        inventoryService.ViewProduct();
-//        goto StartofSystem;
-
-//    case 3:
-//        Console.WriteLine("\nUpdating the product... \n");
-//        inventoryService.UpdateProduct();
-//        goto StartofSystem;
-
-//    case 4:
-//        Console.WriteLine("\nDeleting the product... \n");
-//        inventoryService.DeleteProduct();
-//        goto StartofSystem;
-
-//    case 5:
-//        Console.WriteLine("\nExisting the Program...");
-//        goto EndOfSystem;
-
-//    default:
-//        Console.WriteLine("\nInvalid option entered!! Please choose again.\n");
-//        goto StartofSystem;
-//}
-
-//EndOfSystem:
-//Console.ReadKey();
+EndOfSystem:
+Console.ReadKey();

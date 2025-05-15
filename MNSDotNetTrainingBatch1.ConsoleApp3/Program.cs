@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
+using System.Xml;
 using MNSDotNetTrainingBatch1.ConsoleApp3;
+using Newtonsoft.Json;
 
 string query = @"select * from Tbl_Product";
 SqlService sqlService = new SqlService();
@@ -16,6 +18,20 @@ foreach (var item in lst)
     Console.WriteLine(item.CreatedBy);
     Console.WriteLine("--------------------");
 }
+
+//SqlService sqlService = new SqlService();
+//string query1 = @"INSERT INTO [dbo].[Tbl_BlogDetail]
+//           ([BlogId]
+//           ,[BlogContent])
+//     VALUES
+//           (@BlogId
+//           ,@BlogContent)";
+
+
+//string read = File.ReadAllText("DreamDictionary.json");
+//var lst = JsonConvert.DeserializeObject<DreamDictionaryResponseModel>(read);
+
+//sqlService.Execute(query1, lst.BlogDetail);
 
 //string query1 = @"INSERT INTO [dbo].[Tbl_Product]
 //           ([ProductName]
@@ -80,3 +96,21 @@ public class Product
     public int ModifiedBy { get; set; }
 
 }
+
+//public class DreamDictionaryResponseModel
+//{
+//    //public Blogheader[] BlogHeader { get; set; }
+//    public Blogdetail[] BlogDetail { get; set; }
+//}
+//public class Blogheader
+//{
+//    public int BlogId { get; set; }
+//    public string BlogTitle { get; set; }
+//}
+//public class Blogdetail
+//{
+//    public int BlogDetailId { get; set; }
+//    public int BlogId { get; set; }
+//    public string BlogContent { get; set; }
+//}
+
