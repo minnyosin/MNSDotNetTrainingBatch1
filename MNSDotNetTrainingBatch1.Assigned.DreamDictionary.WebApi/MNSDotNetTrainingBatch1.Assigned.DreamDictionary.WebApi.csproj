@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain.csproj" />
+    <ProjectReference Include="..\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database.csproj" />
   </ItemGroup>
 
 </Project>

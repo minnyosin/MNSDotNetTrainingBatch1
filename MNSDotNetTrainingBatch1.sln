@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi", "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi.csproj", "{F5C920FE-1805-49B5-8405-C763EC50D372}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assigned.DreamDictionary", "Assigned.DreamDictionary", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database", "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database.csproj", "{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain", "ClassLibrary1MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain.csproj", "{3C009ECB-98BB-472E-B8D9-F4251DD345C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,9 +75,22 @@ Global
 		{F5C920FE-1805-49B5-8405-C763EC50D372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5C920FE-1805-49B5-8405-C763EC50D372}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5C920FE-1805-49B5-8405-C763EC50D372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5C920FE-1805-49B5-8405-C763EC50D372} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{3C009ECB-98BB-472E-B8D9-F4251DD345C2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE16C795-97B7-484F-8042-2B290E250964}
