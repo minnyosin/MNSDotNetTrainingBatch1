@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.ConsoleApp5", "MNSDotNetTrainingBatch1.ConsoleApp5\MNSDotNetTrainingBatch1.ConsoleApp5.csproj", "{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Database", "ClassLibrary1MNSDotNetTrainingBatch1.Database\MNSDotNetTrainingBatch1.Database.csproj", "{59AFA499-D728-4430-8D38-390C8F0E4E61}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.WebApi", "MNSDotNetTrainingBatch1.WebApi\MNSDotNetTrainingBatch1.WebApi.csproj", "{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi", "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.WebApi.csproj", "{F5C920FE-1805-49B5-8405-C763EC50D372}"
@@ -27,7 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assigned.DreamDictionary", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database", "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Database.csproj", "{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain", "ClassLibrary1MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain.csproj", "{3C009ECB-98BB-472E-B8D9-F4251DD345C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain", "MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain\MNSDotNetTrainingBatch1.Assigned.DreamDictionary.Domain.csproj", "{65D036E6-C7E7-4F0A-A85D-24059342F585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Database", "MNSDotNetTrainingBatch1.Database\MNSDotNetTrainingBatch1.Database.csproj", "{2D26DCD2-0220-403E-9815-54777391A880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +63,6 @@ Global
 		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AF6C8A6-D560-4E9C-BB05-9B6E913A3789}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59AFA499-D728-4430-8D38-390C8F0E4E61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A4DC5E-CAD5-4D78-A8BD-81402716F1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,10 +75,14 @@ Global
 		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C009ECB-98BB-472E-B8D9-F4251DD345C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D036E6-C7E7-4F0A-A85D-24059342F585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D036E6-C7E7-4F0A-A85D-24059342F585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D036E6-C7E7-4F0A-A85D-24059342F585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D036E6-C7E7-4F0A-A85D-24059342F585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D26DCD2-0220-403E-9815-54777391A880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D26DCD2-0220-403E-9815-54777391A880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D26DCD2-0220-403E-9815-54777391A880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D26DCD2-0220-403E-9815-54777391A880}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,7 +90,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F5C920FE-1805-49B5-8405-C763EC50D372} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E8C0D77E-CD91-4D66-AC39-FFCDE7989441} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{3C009ECB-98BB-472E-B8D9-F4251DD345C2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{65D036E6-C7E7-4F0A-A85D-24059342F585} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE16C795-97B7-484F-8042-2B290E250964}

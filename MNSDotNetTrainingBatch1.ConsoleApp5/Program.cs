@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using ClassLibrary1MNSDotNetTrainingBatch1.Database.Models;
 using Microsoft.EntityFrameworkCore;
-using MNSDotNetTrainingBatch1.Database.NorthwindModels;
+using MNSDotNetTrainingBatch1.Database.Models;
 
 Console.WriteLine("Hello, World!");
 
