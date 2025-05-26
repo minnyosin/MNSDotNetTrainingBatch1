@@ -1,0 +1,6 @@
+@MNSDotNetTrainingBatch1.TestWebApi_HostAddress = http://localhost:5063
+
+GET {{MNSDotNetTrainingBatch1.TestWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

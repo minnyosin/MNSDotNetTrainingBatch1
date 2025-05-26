@@ -5,11 +5,11 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using MNSDotNetTrainingBatch1.TestDapper;
+using MNSDotNetTrainingBatch1.TestShared;
 
 Console.WriteLine("Hello, World!");
 
 SqlService sqlservice = new SqlService();
-
 
 
 //var lst = connection.Query<ProductCategory>("select * from Tbl_ProductCategory").ToList();

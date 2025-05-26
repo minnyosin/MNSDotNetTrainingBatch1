@@ -19,6 +19,7 @@ internal class AppDbContext : DbContext
         }
     }
     public DbSet<ProductCategory> ProductCategory { get; set; }
+
 }
 [Table("Tbl_ProductCategory")]
 public class ProductCategory
