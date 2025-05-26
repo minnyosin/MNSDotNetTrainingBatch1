@@ -1,0 +1,6 @@
+@MNSDotNetTrainingBatch1.MiniWallet.WebApi_HostAddress = http://localhost:5019
+
+GET {{MNSDotNetTrainingBatch1.MiniWallet.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
