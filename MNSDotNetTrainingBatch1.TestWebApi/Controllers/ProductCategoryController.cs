@@ -39,6 +39,13 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
             return Ok(model);
         }
 
+        [HttpGet("{pageNo}/{pageSize}")]
+        public IActionResult GetProductCategoryByPageNo(int pageNo, int pageSize)
+        {
+            var model = _productCategoryService.GetProductCategoryByPageNo(pageNo, pageSize);
+            return Ok(model);
+        }
+
         [HttpPost]
         public IActionResult CreateProductCategory([FromBody] ProductCategory productCategory)
         {
@@ -47,10 +54,10 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
         }
 
         //[HttpPut]
-        [HttpPatch("{code}")]
-        public IActionResult UpdateProductCategory([FromBody] ProductCategory productCategory, string code)
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProductCategory([FromBody] ProductCategory productCategory, int id)
         {
-            var model = _productCategoryService.UpdateProductCategory(productCategory, code);
+            var model = _productCategoryService.UpdateProductCategory(productCategory, id);
             return Ok(model);
         }
 
@@ -62,3 +69,5 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
         }
     }
 }
+
+//Wait 5 min
