@@ -1,10 +1,12 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MNSDotNetTrainingBatch1.TestShared;
 using MNSDotNetTrainingBatch1.TestWebApi.Models;
+using MNSDotNetTrainingBatch1.TestWebApi.Services;
 
 namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
 {
@@ -12,63 +14,35 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
     [ApiController]
     public class ProductCategoryController : ControllerBase
     {
-        DapperService dapperService = new DapperService(new SqlConnectionStringBuilder
+        private readonly IProductCategoryService _productCategoryService;
+
+        public ProductCategoryController(IProductCategoryService productCategoryService)
         {
-            DataSource = ".",
-            InitialCatalog = "DotNetTrainingBatch1",
-            UserID = "sa",
-            Password = "sa@123",
-            TrustServerCertificate = true
-        });
+            _productCategoryService = productCategoryService;
+        }
 
         [HttpGet]
         public IActionResult GetProductCategory()
         {
-            string query = "select * from Tbl_ProductCategory";
-            var lst = dapperService.Query<ProductCategory>(query);
-            var model = new ResponseModel
-            {
-                IsSuccess = true,
-                Message = "Successful!",
-                Data = lst
-            };
+            var model = _productCategoryService.GetProductCategory();
             return Ok(model);
         }
 
         [HttpGet("{code}")]
         public IActionResult GetDetailedProductCategory(string code)
         {
-            string query = "select * from Tbl_ProductCategory where Code = @Code";
-            var lst = dapperService.Query<ProductCategory>(query, new
+            var model = _productCategoryService.GetDetailedProductCategory(code);
+            if (!model.IsSuccess)
             {
-                Code = code
-            });
-
-            var model = new ResponseModel
-            {
-                IsSuccess = true,
-                Message = "Successful!",
-                Data = lst
-            };
+                return BadRequest(model);
+            }
             return Ok(model);
         }
 
         [HttpPost]
         public IActionResult CreateProductCategory([FromBody] ProductCategory productCategory)
         {
-            string query = @"INSERT INTO [dbo].[Tbl_ProductCategory]
-           ([Code]
-           ,[Name])
-     VALUES
-           (@Code
-           ,@Name)";
-            int result = dapperService.Execute(query, productCategory);
-
-            var model = new ResponseModel
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Insert Successful" : "Insert Failed!"
-            };
+            var model = _productCategoryService.CreateProductCategory(productCategory);
             return Ok(model);
         }
 
@@ -76,32 +50,14 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Controllers
         [HttpPatch("{code}")]
         public IActionResult UpdateProductCategory([FromBody] ProductCategory productCategory, string code)
         {
-            productCategory.Code = code;
-            string query = @"UPDATE [dbo].[Tbl_ProductCategory]
-   SET [Name] = @Name
- WHERE Code = @Code";
-            int result = dapperService.Execute(query, productCategory);
-            var model = new ResponseModel
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Update Successful!" : "Update Failed!"
-            };
+            var model = _productCategoryService.UpdateProductCategory(productCategory, code);
             return Ok(model);
         }
 
         [HttpDelete("{code}")]
         public IActionResult DeleteProductCategory(string code)
         {
-            string query = "delete from Tbl_ProductCategory where Code = @Code";
-            int result = dapperService.Execute(query, new ProductCategory
-            {
-                Code = code
-            });
-            var model = new ResponseModel
-            {
-                IsSuccess = result > 0,
-                Message = result > 0 ? "Delete Successful!" : "Delete Failed!"
-            };
+            var model = _productCategoryService.DeleteProductCategory(code);
             return Ok(model);
         }
     }

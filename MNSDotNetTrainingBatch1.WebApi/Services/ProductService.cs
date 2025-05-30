@@ -86,7 +86,7 @@ namespace MNSDotNetTrainingBatch1.WebApi.Services
                 return new ResponseModel
                 {
                     IsSuccess = false,
-                    Message = "Price required"
+                    Message = "Quantity required"
                 };
             }
 

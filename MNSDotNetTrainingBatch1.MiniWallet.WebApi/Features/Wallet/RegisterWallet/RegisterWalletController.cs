@@ -27,7 +27,7 @@ namespace MNSDotNetTrainingBatch1.MiniWallet.WebApi.Features.Wallet.RegisterWall
             if (string.IsNullOrEmpty(requestModel.WalletUsername))
             {
                 model = new RegisterWalletResponseModel
-                {
+                { 
                     Message = "Wallet Username is required"
                 };
                 goto Result;
