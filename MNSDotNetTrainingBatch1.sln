@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.Min
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.MiniWallet.WebApi", "MNSDotNetTrainingBatch1.MiniWallet.WebApi\MNSDotNetTrainingBatch1.MiniWallet.WebApi.csproj", "{A5C8FC87-99D5-49DB-985C-E127A1F4B89C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNSDotNetTrainingBatch1.ApiCall", "MNSDotNetTrainingBatch1.ApiCall\MNSDotNetTrainingBatch1.ApiCall.csproj", "{B3A54E54-C8B0-4C53-8043-3C4010D951E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{A5C8FC87-99D5-49DB-985C-E127A1F4B89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5C8FC87-99D5-49DB-985C-E127A1F4B89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5C8FC87-99D5-49DB-985C-E127A1F4B89C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A54E54-C8B0-4C53-8043-3C4010D951E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A54E54-C8B0-4C53-8043-3C4010D951E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A54E54-C8B0-4C53-8043-3C4010D951E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A54E54-C8B0-4C53-8043-3C4010D951E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

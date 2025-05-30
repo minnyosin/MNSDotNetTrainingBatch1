@@ -47,13 +47,24 @@ namespace MNSDotNetTrainingBatch1.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] ProductModel product)
+        public IActionResult GetProductWithPost([FromBody] int id)
         {
-            string message = product.ToJson();
-            Console.WriteLine("Create Product => " + message);
-            var model = _productService.CreateProduct(product);
+            var model = _productService.GetProductById(id);
+            if (!model.IsSuccess)
+            {
+                return BadRequest(model);
+            }
             return Ok(model);
         }
+
+        //[HttpPost]
+        //public IActionResult CreateProduct([FromBody] ProductModel product)
+        //{
+        //    string message = product.ToJson();
+        //    Console.WriteLine("Create Product => " + message);
+        //    var model = _productService.CreateProduct(product);
+        //    return Ok(model);
+        //}
 
         
         [HttpPut("{Id}")]
