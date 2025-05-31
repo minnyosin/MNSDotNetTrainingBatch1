@@ -10,5 +10,6 @@ namespace MNSDotNetTrainingBatch1.TestWebApi.Services
         ResponseModel GetProductCategory();
         ResponseModel UpdateProductCategory(ProductCategory productCategory, int id);
         ResponseModel GetProductCategoryByPageNo(int pageNo, int pageSize);
+        ResponseModel GetProductCategoryWithPost(string code);
     }
 }

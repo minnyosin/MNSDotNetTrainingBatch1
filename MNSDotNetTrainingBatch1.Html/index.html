@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" , id="txtData">
+    <button onclick="saveFunction()">Save</button>
+    <button onclick="readFunction()">Read</button>
+    <button onclick="deleteFunction()">Delete</button>
+
+    <script src="plugins/jquery-3.7.1.min.js"></script>
+    <script>
+        function saveFunction()
+        {
+            // const data = document.getElementById("txtData").value;
+            const data = $('#txtData').val();
+            localStorage.setItem("name", data);
+            alert("Hello " + data);
+            $('#txtData').val('');
+        }
+        function readFunction()
+        {
+            const data = localStorage.getItem("name");
+            $('#txtData').val(data);
+        }
+        function deleteFunction()
+        {
+            const isDelete = confirm("Are you sure you want to delete?")
+            if (!isDelete)
+            {
+                return;
+            }
+            localStorage.removeItem("name");
+        }
+
+    </script>
+
+</body>
+
+</html>
